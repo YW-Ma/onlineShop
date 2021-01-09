@@ -1,28 +1,35 @@
 package com.study.onlineShop.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
 import java.io.Serializable;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "cartitem")
 public class CartItem implements Serializable {
+
   private static final long serialVersionUID = 202L;
+
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
 
   private int quantity;
 
-  private double price; // 其实这里不该维护price，因为加入购物车后价格可能还会变化。
+  private double price;  // 其实这里不该维护price，因为加入购物车后价格可能还会变化。
 
-  @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @ManyToOne
+  private Product product;
+
+  @ManyToOne
   @JsonIgnore
   private Cart cart;
-
-  @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-  private Product product;
 
   public int getId() {
     return id;
@@ -48,14 +55,6 @@ public class CartItem implements Serializable {
     this.price = price;
   }
 
-  public Cart getCart() {
-    return cart;
-  }
-
-  public void setCart(Cart cart) {
-    this.cart = cart;
-  }
-
   public Product getProduct() {
     return product;
   }
@@ -63,4 +62,13 @@ public class CartItem implements Serializable {
   public void setProduct(Product product) {
     this.product = product;
   }
+
+  public Cart getCart() {
+    return cart;
+  }
+
+  public void setCart(Cart cart) {
+    this.cart = cart;
+  }
 }
+

@@ -1,34 +1,32 @@
 package com.study.onlineShop.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
 @Entity
-@Table(name = "shippingAddress")
+@Table(name = "shippingaddress")
 public class ShippingAddress implements Serializable {
+
   private static final long serialVersionUID = 104L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
-
   private String address;
-
   private String city;
-
   private String state;
-
   private String zipcode;
-
   private String country;
 
-  // 1:1, do not store this column.
+  // do not store this column in my table. just keep a relationship.
   @OneToOne(mappedBy = "shippingAddress")
   private Customer customer;
-
-  public static long getSerialVersionUID() {
-    return serialVersionUID;
-  }
 
   public int getId() {
     return id;

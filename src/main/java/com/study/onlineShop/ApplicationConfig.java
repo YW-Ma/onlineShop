@@ -10,14 +10,13 @@ import com.study.onlineShop.Confidentials.*;
 
 @Configuration
 public class ApplicationConfig {
-  // reference: https://blog.csdn.net/J080624/article/details/82937616
 
   @Bean(name = "sessionFactory")
   public LocalSessionFactoryBean sessionFactory() {
     LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-    sessionFactory.setDataSource(dataSource()); //告诉它链接的数据库(下方函数）
-    sessionFactory.setPackagesToScan("com.study.onlineShop.entity");  //告诉它要扫描的路径
-    sessionFactory.setHibernateProperties(hibernateProperties()); //告诉它我的配置（下方函数）
+    sessionFactory.setDataSource(dataSource());
+    sessionFactory.setPackagesToScan("onlineShop.entity");
+    sessionFactory.setHibernateProperties(hibernateProperties());
     return sessionFactory;
   }
 
@@ -25,7 +24,6 @@ public class ApplicationConfig {
   public DataSource dataSource() {
     DriverManagerDataSource dataSource = new DriverManagerDataSource();
     dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-    // 只需要修改红色部分, 保留其他内容
     dataSource.setUrl("jdbc:mysql://" + Confidentials.RDS_ENDPOINT + ":3306/ecommerce?createDatabaseIfNotExist=true&serverTimezone=UTC");
     dataSource.setUsername(Confidentials.USERNAME);
     dataSource.setPassword(Confidentials.PASSWORD);

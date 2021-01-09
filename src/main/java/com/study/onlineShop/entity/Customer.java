@@ -1,12 +1,20 @@
 package com.study.onlineShop.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "customer")
 public class Customer implements Serializable {
+
   private static final long serialVersionUID = 103L;
 
   @Id
@@ -16,27 +24,22 @@ public class Customer implements Serializable {
   private String lastName;
   private String customerPhone;
 
-  // FK
-  // 1:1, 1:N, default eager
-  // N:1, N:N, default lazy
-  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  // fetch: 1:1, 1:N default eager
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(unique = true)
   private ShippingAddress shippingAddress;
 
-  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(unique = true)
   private BillingAddress billingAddress;
 
-  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(unique = true)
   private User user;
 
-  @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+  @OneToOne(cascade = CascadeType.ALL)
+  @JoinColumn(unique = true)
   private Cart cart;
-
-  @OneToMany(mappedBy = "customer", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-  private List<SalesOrder> salesOrder;
-
-  public static long getSerialVersionUID() {
-    return serialVersionUID;
-  }
 
   public int getId() {
     return id;

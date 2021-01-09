@@ -1,22 +1,30 @@
 package com.study.onlineShop.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 @Table(name = "cart")
 public class Cart implements Serializable {
+
   private static final long serialVersionUID = 106L;
+
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private int id;
-
-  private double totalPrice;
 
   @OneToOne(mappedBy = "cart")
   @JsonIgnore
@@ -27,8 +35,7 @@ public class Cart implements Serializable {
   // 比如我和Customer的关系，cascade应该写在Customer一侧，因为关联的是id
   private List<CartItem> cartItem;
 
-  //  @OneToMany(mappedBy = "cart")
-  //  private SalesOrder salesOrder;
+  private double totalPrice;
 
   public int getId() {
     return id;
@@ -36,6 +43,14 @@ public class Cart implements Serializable {
 
   public void setId(int id) {
     this.id = id;
+  }
+
+  public List<CartItem> getCartItem() {
+    return cartItem;
+  }
+
+  public void setCartItem(List<CartItem> cartItem) {
+    this.cartItem = cartItem;
   }
 
   public double getTotalPrice() {
@@ -54,11 +69,5 @@ public class Cart implements Serializable {
     this.customer = customer;
   }
 
-  public List<CartItem> getCartItem() {
-    return cartItem;
-  }
-
-  public void setCartItem(List<CartItem> cartItem) {
-    this.cartItem = cartItem;
-  }
 }
+
