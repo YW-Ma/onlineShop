@@ -15,7 +15,7 @@ public class ApplicationConfig {
   public LocalSessionFactoryBean sessionFactory() {
     LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
     sessionFactory.setDataSource(dataSource());
-    sessionFactory.setPackagesToScan("onlineShop.entity");
+    sessionFactory.setPackagesToScan("com.study.onlineShop.entity");
     sessionFactory.setHibernateProperties(hibernateProperties());
     return sessionFactory;
   }
