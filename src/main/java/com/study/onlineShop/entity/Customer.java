@@ -41,6 +41,8 @@ public class Customer implements Serializable {
   @JoinColumn(unique = true)
   private Cart cart;
 
+  // OneToMany relationship (to SalesOrder) doesn't show here.
+
   public int getId() {
     return id;
   }
