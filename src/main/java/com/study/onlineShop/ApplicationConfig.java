@@ -7,8 +7,12 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import com.study.onlineShop.Confidentials.*;
+// let spring help to initiate spring mvc related beans
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+
 
 @Configuration
+@EnableWebMvc
 public class ApplicationConfig {
 
   @Bean(name = "sessionFactory")
