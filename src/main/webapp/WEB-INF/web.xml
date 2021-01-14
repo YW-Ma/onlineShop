@@ -21,13 +21,14 @@
 		</listener-class>
 	</listener>
 
+    <!-- to create the DispatcherServlet and let it listen to all requests.-->
 	<servlet>
 		<servlet-name>onlineShop</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>onlineShop</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+	
 </web-app>
