@@ -21,7 +21,7 @@ In cart, you can check out.
 | /admin/product/editProduct/{productId} | GET            | productList.jsp | getEditForm()    | **Get a form to let admin update an existing product** |
 | /admin/product/editProduct/{productId} | POST           | editProduct.jsp | editProduct()    | **Save updated product to DB**                         |
 
-## Cart CRUD
+### Cart CRUD
 | URL                               | Request method | JSP                        | Method to handle     | purpose                                    |
 | --------------------------------- | -------------- | -------------------------- | -------------------- | ------------------------------------------ |
 | /cart/getCartById                 | GET            | navbar.jsp                 | getCartId()          | Get the cart related to the logged in user |
