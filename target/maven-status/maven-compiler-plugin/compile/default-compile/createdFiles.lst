@@ -1,0 +1,14 @@
+com\study\onlineShop\entity\Customer.class
+com\study\onlineShop\entity\SalesOrder.class
+com\study\onlineShop\entity\BillingAddress.class
+com\study\onlineShop\ApplicationConfig.class
+com\study\onlineShop\controller\HomePageController.class
+com\study\onlineShop\Application.class
+com\study\onlineShop\entity\Cart.class
+com\study\onlineShop\Confidentials.class
+com\study\onlineShop\entity\Authorities.class
+com\study\onlineShop\dao\CustomerDao.class
+com\study\onlineShop\entity\CartItem.class
+com\study\onlineShop\entity\Product.class
+com\study\onlineShop\entity\User.class
+com\study\onlineShop\entity\ShippingAddress.class

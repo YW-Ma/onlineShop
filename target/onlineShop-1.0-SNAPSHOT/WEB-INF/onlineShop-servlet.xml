@@ -10,9 +10,11 @@
        http://www.springframework.org/schema/context
        http://www.springframework.org/schema/context/spring-context.xsd">
 
+	<!-- 启用MVC相关的object，如创建HandlerMapping-->
 	<mvc:annotation-driven></mvc:annotation-driven>
 
-	<context:component-scan base-package="onlineShop"></context:component-scan>
+	<!-- 让Spring去把base-package下所有的@Controller、@Service、@Repository、@Component创建出来-->
+	<context:component-scan base-package="com.study.onlineShop"></context:component-scan>
 
 	<!-- Using this it get the actual view name by converting logical view name -->
 	<!-- for eg: logical view name is welcome -->
@@ -24,7 +26,7 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-	<!-- mvc:resources is to find the resource file like bootstrap,css,JQuery 
+	<!-- mvc:resources is to find the resource file like bootstrap,css,JQuery
 		and Images in resource folder -->
 
 	<mvc:resources mapping="/resource/**" location="/WEB-INF/resource/" />
