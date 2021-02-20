@@ -46,6 +46,7 @@ public class CartItemController {
     List<CartItem> cartItems = cart.getCartItem();
     Product product = productService.getProductById(productId);
 
+    // 修改现有商品的quantity,进入的条件是 cartItems.size() > 0
     for (int i = 0; i < cartItems.size(); i++) {
       CartItem cartItem = cartItems.get(i);
       if (product.getId() == (cartItem.getProduct().getId())) {
@@ -56,6 +57,7 @@ public class CartItemController {
       }
     }
 
+    // 添加新商品
     CartItem cartItem = new CartItem();
     cartItem.setQuantity(1);
     cartItem.setProduct(product);
@@ -76,5 +78,5 @@ public class CartItemController {
     Cart cart = cartService.getCartById(cartId);
     cartItemService.removeAllCartItems(cart);
   }
-
 }
+

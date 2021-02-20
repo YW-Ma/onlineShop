@@ -39,9 +39,9 @@ public class CartItemDao {
       CartItem cartItem = session.get(CartItem.class, cartItemId);
       Cart cart = cartItem.getCart();
       List<CartItem> cartItems = cart.getCartItem();
-      cartItems.remove(cartItem);
+      cartItems.remove(cartItem); // 先修改本地obj里面的cartItem
       session.beginTransaction();
-      session.delete(cartItem);
+      session.delete(cartItem); // 再写session指令。（否则hibernate自动加回去）
       session.getTransaction().commit();
     } catch (Exception e) {
       e.printStackTrace();
