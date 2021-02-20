@@ -13,7 +13,10 @@ public class HomePageController {
     return "index"; // to index view (return a String)
   }
 
-  @RequestMapping("/login")
+  // login不会立马到我们这里，而是先通过security。
+  // 如果有error就会redirect到“/login?error=xxxx"。
+  // 我们可以check是否有error、logout的para存在。
+  @RequestMapping(value = "/login")
   public ModelAndView login(@RequestParam(value = "error", required = false) String error,
                             @RequestParam(value = "logout", required = false) String logout) {
     ModelAndView modelAndView = new ModelAndView();
