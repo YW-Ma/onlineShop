@@ -10,7 +10,11 @@ In cart, you can check out.
 ![](https://github.com/YW-Ma/onlineShop/blob/main/DB.png)
 
 ## API
-### Product CRUD
+
+
+
+### Product
+
 | URL                                    | Request method | JSP             | Method to handle | purpose                                                |
 | -------------------------------------- | -------------- | --------------- | ---------------- | ------------------------------------------------------ |
 | /get**AllProducts**                    | GET            | navbar.jsp      | getAllProducts() | Get all products from DB                               |
@@ -21,11 +25,18 @@ In cart, you can check out.
 | /admin/product/editProduct/{productId} | GET            | productList.jsp | getEditForm()    | **Get a form to let admin update an existing product** |
 | /admin/product/editProduct/{productId} | POST           | editProduct.jsp | editProduct()    | **Save updated product to DB**                         |
 
-### Cart CRUD
+### CartItem
+
 | URL                               | Request method | JSP                        | Method to handle     | purpose                                    |
 | --------------------------------- | -------------- | -------------------------- | -------------------- | ------------------------------------------ |
 | /cart/getCartById                 | GET            | navbar.jsp                 | getCartId()          | Get the cart related to the logged in user |
 | /cart/add/{productId}             | PUT            | productList.jspaddToCart() | addCartItem()        | Add a product to cart                      |
 | /cart/removeCartItem/{cartItemId} | DELETE         | Cart.jspremoveFromCart()   | removeCartItem()     | Remove an existing cartItem from cart      |
 | /cart/removeAllItems/{cartId}     | DELETE         | Cart.jspclearCart()        | removeAllCartItems() | Clean all items inside cart                |
+
+### Order
+
+| URL             | Request method | JSP      | Method to handle | purpose                 |
+| --------------- | -------------- | -------- | ---------------- | ----------------------- |
+| /order/{cartId} | GET            | cart.jsp | createOrder()    | Trigger a checkout flow |
 
