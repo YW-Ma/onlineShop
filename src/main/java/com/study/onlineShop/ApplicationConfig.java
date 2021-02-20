@@ -28,13 +28,22 @@ public class ApplicationConfig {
   public DataSource dataSource() {
     DriverManagerDataSource dataSource = new DriverManagerDataSource();
     dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-    dataSource.setUrl("jdbc:mysql://" + Confidentials.RDS_ENDPOINT + ":3306/ecommerce?createDatabaseIfNotExist=true&serverTimezone=UTC");
-    dataSource.setUsername(Confidentials.USERNAME);
-    dataSource.setPassword(Confidentials.PASSWORD);
+//    dataSource.setUrl("jdbc:mysql://" + Confidentials.RDS_ENDPOINT + ":3306/ecommerce?createDatabaseIfNotExist=true&serverTimezone=UTC");
+//    dataSource.setUsername(Confidentials.USERNAME);
+//    dataSource.setPassword(Confidentials.PASSWORD);
+    dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+
+    final String INSTANCE = "localhost";
+    final String PORT_NUM = "3306";
+    final String DB_NAME = "online_shop_db";
+    final String USERNAME = "root";
+    final String PASSWORD = "asdf";
+    dataSource.setUrl("jdbc:mysql://" + INSTANCE + ":" + PORT_NUM + "/" + DB_NAME);
+    dataSource.setUsername(USERNAME);
+    dataSource.setPassword(PASSWORD);
 
     return dataSource;
   }
-
 
   private final Properties hibernateProperties() {
     Properties hibernateProperties = new Properties();
